@@ -13,14 +13,14 @@ const SignUp = () => {
 };
 
 const SignUpForm = () => {
-  const initialState = {
+  const INITIAL_STATE = {
     username: "",
     email: "",
     passwordOne: "",
     passwordTwo: "",
     error: null,
   };
-  const [formState, setFormState] = useState(initialState);
+  const [formState, setFormState] = useState(INITIAL_STATE);
   const firebase = useContext(FirebaseContext);
   const history = useHistory();
 
@@ -28,7 +28,7 @@ const SignUpForm = () => {
     firebase
       .doCreateUserWithEmailAndPassword(formState.email, formState.passwordOne)
       .then((authUser) => {
-        setFormState(initialState);
+        setFormState(INITIAL_STATE);
         history.push(ROUTES.HOME);
       })
       .catch((error) => {
