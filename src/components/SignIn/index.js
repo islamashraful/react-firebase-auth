@@ -1,13 +1,17 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { FirebaseContext } from "../Firebase";
+import { PasswordForgetLink } from "../PasswordForget";
+import { SignUpLink } from "../SignUp";
 import * as ROUTES from "../../constants/routes";
 
 const SignIn = () => {
   return (
     <div>
       <h1>SignIn</h1>
+      <PasswordForgetLink />
       <SignInForm />
+      <SignUpLink />
     </div>
   );
 };

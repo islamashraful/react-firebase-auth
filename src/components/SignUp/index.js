@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { FirebaseContext } from "../Firebase";
 import * as ROUTES from "../../constants/routes";
@@ -89,4 +90,11 @@ const SignUpForm = () => {
   );
 };
 
+const SignUpLink = () => (
+  <p>
+    <Link to={ROUTES.SIGN_UP}>SignUp</Link>
+  </p>
+);
+
 export default SignUp;
+export { SignUpLink };
