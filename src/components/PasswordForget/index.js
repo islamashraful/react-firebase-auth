@@ -66,6 +66,6 @@ const PasswordForgetLink = () => (
   </p>
 );
 
-export { PasswordForgetLink };
+export { PasswordForgetLink, PasswordForgetForm };
 
 export default PasswordForget;
