@@ -29,6 +29,13 @@ const SignUpForm = () => {
     firebase
       .doCreateUserWithEmailAndPassword(formState.email, formState.passwordOne)
       .then((authUser) => {
+        // Create a user in your Firebase realtime database
+        return firebase.user(authUser.user.uid).set({
+          username: formState.username,
+          email: formState.email,
+        });
+      })
+      .then((authUser) => {
         setFormState(INITIAL_STATE);
         history.push(ROUTES.HOME);
       })

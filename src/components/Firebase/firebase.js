@@ -1,5 +1,6 @@
 import app from "firebase/app";
 import "firebase/auth";
+import "firebase/database";
 
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -9,12 +10,14 @@ const config = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
   appId: process.env.REACT_APP_APP_ID,
   measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+  databaseURL: process.env.REACT_APP_DATABASE_URL,
 };
 
 class Firebase {
   constructor() {
     app.initializeApp(config);
     this.auth = app.auth();
+    this.db = app.database();
   }
 
   doCreateUserWithEmailAndPassword = (email, password) =>
@@ -29,6 +32,10 @@ class Firebase {
 
   doPasswordUpdate = (password) =>
     this.auth.currentUser.updatePassword(password);
+
+  user = (uid) => this.db.ref(`users/${uid}`);
+
+  users = () => this.db.ref("users");
 }
 
 export default Firebase;
