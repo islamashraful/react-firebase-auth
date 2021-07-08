@@ -18,6 +18,7 @@ const App = () => {
 
   useEffect(() => {
     const listener = firebase.auth.onAuthStateChanged((res) => {
+      // Set/remove a token on localStorage
       res ? setAuthUser({ authUser: res }) : setAuthUser({ authUser: null });
     });
     return () => {
