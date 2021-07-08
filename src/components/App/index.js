@@ -10,7 +10,7 @@ import AccountPage from "../Account";
 import AdminPage from "../Admin";
 import * as ROUTES from "../../constants/routes";
 import { FirebaseContext } from "../Firebase";
-import { AuthUserContext } from "../Session";
+import { AuthUserContext, PrivateRoute } from "../Session";
 
 const App = () => {
   const [authUser, setAuthUser] = useState({ authUser: null });
@@ -35,9 +35,10 @@ const App = () => {
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
-          <Route path={ROUTES.HOME} component={HomePage} />
-          <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-          <Route path={ROUTES.ADMIN} component={AdminPage} />
+          {/* Private Routes */}
+          <PrivateRoute path={ROUTES.HOME} component={HomePage} />
+          <PrivateRoute path={ROUTES.ACCOUNT} component={AccountPage} />
+          <PrivateRoute path={ROUTES.ADMIN} component={AdminPage} />
         </div>
       </Router>
     </AuthUserContext.Provider>
